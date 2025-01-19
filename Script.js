@@ -45,7 +45,7 @@
 
              form.addEventListener("submit", function (event) {
                event.preventDefault();
-               fetch("/", {
+               fetch("./", {
                  method: "POST",
                  body: new FormData(form),
                })
