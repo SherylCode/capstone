@@ -6,7 +6,7 @@
             const target = $(this.getAttribute('href'));
             if (target.length) {
                 $('html, body').stop().animate({
-                    scrollTop: target.offset().top - 100 // Adjust offset as needed
+                    scrollTop: target.offset().top - 100 
                 }, 1000);
             }
         });
@@ -39,6 +39,22 @@
                 menuToggle.innerHTML = "&#9776;";
                 menuToggle.setAttribute("aria-expanded", "false");
             }
+
+             const form = document.getElementById("contact-form");
+             const successMessage = document.getElementById("success-message");
+
+             form.addEventListener("submit", function (event) {
+               event.preventDefault();
+               fetch("/", {
+                 method: "POST",
+                 body: new FormData(form),
+               })
+                 .then(() => {
+                   form.reset();
+                   successMessage.classList.remove("hidden");
+                 })
+                 .catch(() => alert("There was an error submitting the form."));
+             });
         });
     });
 
