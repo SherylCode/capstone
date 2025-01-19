@@ -45,21 +45,4 @@ $(document).ready(function () {
       menuToggle.setAttribute("aria-expanded", "false");
     }
   });
-
-  // Form submission logic
-  const form = document.getElementById("contact-form");
-  const successMessage = document.getElementById("success-message");
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    fetch("./", {
-      method: "POST",
-      body: new FormData(form),
-    })
-      .then(() => {
-        form.reset();
-        successMessage.classList.remove("hidden");
-      })
-      .catch(() => alert("There was an error submitting the form."));
-  });
 });
